@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+
+  pipeline:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: prepare
+        run: npm ci
+
+      - name: sanity-check
+        run: npm run lint
+
+      - name: build
+        run: npm run build
+
+      - name: test
+        run: npm test
+
+      - name: release
+        if: github.ref == 'refs/heads/main'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+          mkdir -p ~/.ssh && ssh-keyscan ${{ secrets.FTP_HOST }} >> ~/.ssh/known_hosts
+          lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} sftp://${{ secrets.FTP_HOST }}; mirror -eR dist sueldo"
+
+      - name: clean
+        if: ${{ always() }}
+        run: rm -rf dist tmp

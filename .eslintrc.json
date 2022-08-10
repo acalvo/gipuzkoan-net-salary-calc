@@ -1,0 +1,34 @@
+{
+    "root": true,
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:wc/recommended",
+        "plugin:lit/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "env": {
+        "browser": true
+    },
+    "rules": {
+        "eol-last": "error",
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1
+            }
+        ],
+        "prefer-template": "error",
+        "semi": "error",
+        "sort-imports": "error",
+        "quotes": [
+            "error",
+            "single"
+        ]
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "DOM",
+      "es2019"
+    ],
+    "experimentalDecorators": true
+  }
+}
