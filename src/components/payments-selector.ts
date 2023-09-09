@@ -63,8 +63,7 @@ export class PaymentsSelector extends LitElement {
         12 pagas
       </label>
       <label class=${this.payments===14 ? 'selected' : '' }>
-        <input type="radio" name="payments" value="14" class=${this.payments===14 ? 'selected' : '' }
-          @change=${this.setPayments}>
+        <input type="radio" name="payments" value="14" @change=${this.setPayments}>
         14 pagas
       </label>
     `;
