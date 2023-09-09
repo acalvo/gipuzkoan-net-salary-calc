@@ -41,16 +41,26 @@ export class NetSalaryCalculator extends LitElement {
   @state()
   payments = 12;
 
+  MAXIMUM_SS_ANNUAL_QUOTE = 4495.50 * 12;
+  SS_CONTRIBUTION_RATE = 0.0645;
+  netSalary = 0;
+
   private setSalary(event: CustomEvent) {
     this.salary = event.detail.salary;
   }
 
   private setIrpf(event: CustomEvent) {
-    this.irpf = event.detail.irpf;
+    this.irpf = event.detail.irpf / 100;
   }
 
   private setPayments(event: CustomEvent) {
     this.payments = event.detail.payments;
+  }
+
+  willUpdate() {
+    const irpfContribution = this.salary * this.irpf;
+    const socialSecurityContribution = Math.min(this.salary, this.MAXIMUM_SS_ANNUAL_QUOTE) * this.SS_CONTRIBUTION_RATE;
+    this.netSalary = (this.salary - irpfContribution - socialSecurityContribution) / this.payments;
   }
 
   render() {
@@ -67,10 +77,7 @@ export class NetSalaryCalculator extends LitElement {
       <hr>
       <p>
         Sueldo neto mensual:
-        <strong>${((1 - this.irpf / 100 - 0.0635) * this.salary / this.payments).toLocaleString('es', {
-      maximumFractionDigits: 2,
-      minimumFractionDigits: 2
-    })}&nbsp;€</strong>
+        <strong>${this.netSalary.toLocaleString('es', { style: 'currency', currency: 'EUR' })}</strong>
       </p>
     `;
   }

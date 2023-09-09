@@ -45,7 +45,7 @@ describe('net-salary-calculator', () => {
       while (el.isUpdatePending) {
         await el.updateComplete;
       }
-      expect(el.shadowRoot.innerHTML).contains('1394,17');
+      expect(el.shadowRoot.innerHTML).contains('1392,50');
     });
 
     it('40000 salary, automatic IPRF, 2 descendants, 14 payments', async () => {
@@ -63,7 +63,7 @@ describe('net-salary-calculator', () => {
       while (el.isUpdatePending) {
         await el.updateComplete;
       }
-      expect(el.shadowRoot.innerHTML).contains('2218,57');
+      expect(el.shadowRoot.innerHTML).contains('2215,71');
     });
 
     it('60000 salary, automatic IPRF, 4 descendants, 12 payments', async () => {
@@ -78,7 +78,7 @@ describe('net-salary-calculator', () => {
       while (el.isUpdatePending) {
         await el.updateComplete;
       }
-      expect(el.shadowRoot.innerHTML).contains('3732,50');
+      expect(el.shadowRoot.innerHTML).contains('3760,04');
     });
 
     it('80000 salary, 25% IPRF, 14 payments', async () => {
@@ -99,7 +99,7 @@ describe('net-salary-calculator', () => {
       while (el.isUpdatePending) {
         await el.updateComplete;
       }
-      expect(el.shadowRoot.innerHTML).contains('3922,86');
+      expect(el.shadowRoot.innerHTML).contains('4037,18');
     });
 
     it('1000000000 salary, automatic IRPF, 100 descendants, 12 payments', async () => {
@@ -114,7 +114,7 @@ describe('net-salary-calculator', () => {
       while (el.isUpdatePending) {
         await el.updateComplete;
       }
-      expect(el.shadowRoot.innerHTML).contains('47.208.333,33');
+      expect(el.shadowRoot.innerHTML).contains('52.499.710,04');
     });
   });
 });
