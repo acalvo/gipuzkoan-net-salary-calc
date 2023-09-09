@@ -70,7 +70,7 @@ export class NetSalaryCalculator extends LitElement {
         <strong>${((1 - this.irpf / 100 - 0.0635) * this.salary / this.payments).toLocaleString('es', {
       maximumFractionDigits: 2,
       minimumFractionDigits: 2
-      })} €</strong>
+    })}&nbsp;€</strong>
       </p>
     `;
   }
