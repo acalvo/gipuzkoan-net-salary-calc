@@ -1,8 +1,8 @@
 import { LitElement, PropertyValues, css, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { inputCheckboxStyles, inputNumberStyles } from '../shared-styles';
+import { IRPF_TABLE } from '../taxes-2024';
 import { classMap } from 'lit/directives/class-map.js';
-import irpfTable from '../irpf-table';
 
 @customElement('irpf-selector')
 export class IrpfSelector extends LitElement {
@@ -41,7 +41,7 @@ export class IrpfSelector extends LitElement {
 
   willUpdate(changedProperties: PropertyValues<this>) {
     if (this.automatic) {
-      const level = irpfTable[Object.keys(irpfTable).find((t) => Number(t) >= this.salary)];
+      const level = IRPF_TABLE[Object.keys(IRPF_TABLE).find((t) => Number(t) >= this.salary)];
       this.irpf = level[this.descendants] ?? level[level.length - 1];
     }
     if (changedProperties.has('irpf')) {

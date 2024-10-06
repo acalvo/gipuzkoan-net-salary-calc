@@ -2,6 +2,7 @@ import './gross-salary-selector';
 import './irpf-selector';
 import './payments-selector';
 import { LitElement, css, html } from 'lit';
+import { MAXIMUM_SS_ANNUAL_QUOTE, SS_CONTRIBUTION_RATE } from '../taxes-2024';
 import { customElement, state } from 'lit/decorators.js';
 
 @customElement('net-salary-calculator')
@@ -41,8 +42,6 @@ export class NetSalaryCalculator extends LitElement {
   @state()
   payments = 12;
 
-  MAXIMUM_SS_ANNUAL_QUOTE = 4495.50 * 12;
-  SS_CONTRIBUTION_RATE = 0.0645;
   netSalary = 0;
 
   private setSalary(event: CustomEvent) {
@@ -59,7 +58,7 @@ export class NetSalaryCalculator extends LitElement {
 
   willUpdate() {
     const irpfContribution = this.salary * this.irpf;
-    const socialSecurityContribution = Math.min(this.salary, this.MAXIMUM_SS_ANNUAL_QUOTE) * this.SS_CONTRIBUTION_RATE;
+    const socialSecurityContribution = Math.min(this.salary, MAXIMUM_SS_ANNUAL_QUOTE) * SS_CONTRIBUTION_RATE;
     this.netSalary = (this.salary - irpfContribution - socialSecurityContribution) / this.payments;
   }
 

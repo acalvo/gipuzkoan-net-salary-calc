@@ -34,8 +34,8 @@ describe('irpf-selector', () => {
       while (el.isUpdatePending) {
         await el.updateComplete;
       }
-      expect(detail.irpf).to.equal(21);
-      expect(irpfInput.value).to.equal('21');
+      expect(detail.irpf).to.equal(20);
+      expect(irpfInput.value).to.equal('20');
     });
 
     it('50000 salary, automatic irpf, 4 descendants', async () => {
@@ -50,8 +50,8 @@ describe('irpf-selector', () => {
       while (el.isUpdatePending) {
         await el.updateComplete;
       }
-      expect(detail.irpf).to.equal(17);
-      expect(irpfInput.value).to.equal('17');
+      expect(detail.irpf).to.equal(15);
+      expect(irpfInput.value).to.equal('15');
     });
 
     it('50000 salary, 20% IRPF', async () => {
