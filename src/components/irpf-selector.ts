@@ -1,7 +1,7 @@
 import { LitElement, PropertyValues, css, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { inputCheckboxStyles, inputNumberStyles } from '../shared-styles';
-import { IRPF_TABLE } from '../taxes-2024';
+import { IRPF_TABLE } from '../taxes-2025';
 import { classMap } from 'lit/directives/class-map.js';
 
 @customElement('irpf-selector')
