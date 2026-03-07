@@ -2,7 +2,7 @@ import './gross-salary-selector';
 import './irpf-selector';
 import './payments-selector';
 import { LitElement, css, html } from 'lit';
-import { MAXIMUM_SS_ANNUAL_QUOTE, SS_CONTRIBUTION_RATE } from '../taxes-2025';
+import { MAXIMUM_SS_ANNUAL_QUOTE, SS_CONTRIBUTION_RATE } from '../taxes-2026';
 import { customElement, state } from 'lit/decorators.js';
 
 @customElement('net-salary-calculator')
